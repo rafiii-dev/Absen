@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absen Kelas</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Absen Kelas</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="form-section">
+            <div class="container">
+                <h2>Formulir Absen</h2>
+                <form id="attendance-form">
+                    <label for="name">Nama Lengkap:</label>
+                    <input type="text" id="name" name="name" placeholder="Masukkan nama" required>
+
+                    <label for="class">Kelas:</label>
+                    <input type="text" id="class" name="class" placeholder="Masukkan kelas" required>
+
+                    <label for="date">Tanggal:</label>
+                    <input type="date" id="date" name="date" required>
+
+                    <button type="submit">Kirim Absen</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="attendance-list">
+            <div class="container">
+                <h2>Daftar Kehadiran</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Lengkap</th>
+                            <th>Kelas</th>
+                            <th>Tanggal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="attendance-records">
+                        <!-- Data kehadiran akan ditambahkan di sini -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Absen Kelas. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const form = document.getElementById('attendance-form');
+        const records = document.getElementById('attendance-records');
+        let recordCount = 0;
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const classValue = document.getElementById('class').value;
+            const date = document.getElementById('date').value;
+
+            recordCount++;
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${recordCount}</td>
+                <td>${name}</td>
+                <td>${classValue}</td>
+                <td>${date}</td>
+            `;
+            records.appendChild(newRow);
+
+            form.reset();
+        });
+    </script>
+</body>
+</html>
+<link rel="stylesheet" href="style.css">
